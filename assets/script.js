@@ -1,5 +1,6 @@
 var quizContainer = document.querySelector("main");
 var startbtn = document.getElementById("start-btn");
+var questionSection = document.createElement("section");
 var i = 0;
 var quiz = [
   {
@@ -28,7 +29,6 @@ function checkAnswer() {
 
 //creates quiz element and adds it to page in place of previous element
 function renderQuiz() {
-  var questionSection = document.createElement("section");
   questionSection.innerHTML = `<h1>${quiz[i].question}</h1>
           <ul>
               <li>${quiz[i].answers[0]}</li>
@@ -52,9 +52,5 @@ function startQuiz() {
   renderQuiz();
 }
 
-//moves to next question in quiz array
-function nextQuestion() {
-    renderQuiz()
-}
 
 startbtn.addEventListener("click", startQuiz);
