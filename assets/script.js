@@ -19,12 +19,14 @@ var quiz = [
   },
 ];
 
+//checks chosen answer 
 function checkAnswer() {
   console.log("correct!");
   i++
   nextQuestion();
 }
 
+//creates quiz element and adds it to page in place of previous element
 function renderQuiz() {
   var questionSection = document.createElement("section");
   questionSection.innerHTML = `<h1>${quiz[i].question}</h1>
@@ -44,11 +46,13 @@ function renderQuiz() {
   }
 }
 
+//clears intro and begins quiz
 function startQuiz() {
   document.getElementById("quiz-start-screen").style.display = "none";
   renderQuiz();
 }
 
+//moves to next question in quiz array
 function nextQuestion() {
     renderQuiz()
 }
