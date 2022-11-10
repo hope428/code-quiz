@@ -1,7 +1,8 @@
 var quizContainer = document.querySelector("main");
 var startbtn = document.getElementById("start-btn");
 var questionSection = document.createElement("section");
-var i = 0;
+var currentQuestion = 0;
+var timer = 90;
 var quiz = [
   {
     question: "What color is the sun?",
@@ -21,20 +22,29 @@ var quiz = [
 ];
 
 //checks chosen answer 
-function checkAnswer() {
-  console.log("correct!");
-  i++
-  nextQuestion();
+function checkAnswer(event) {
+  var selectedAnswer = event.target.textContent;
+
+  if(quiz[currentQuestion].correctAnswer === selectedAnswer)
+  {
+    console.log("correct!")
+    currentQuestion++
+  } else {
+    console.log("incorrect")
+    timer -= 15;
+    console.log(timer)
+  }
+  renderQuiz();
 }
 
 //creates quiz element and adds it to page in place of previous element
 function renderQuiz() {
-  questionSection.innerHTML = `<h1>${quiz[i].question}</h1>
+  questionSection.innerHTML = `<h1>${quiz[currentQuestion].question}</h1>
           <ul>
-              <li>${quiz[i].answers[0]}</li>
-              <li>${quiz[i].answers[1]}</li>
-              <li>${quiz[i].answers[2]}</li>
-              <li>${quiz[i].answers[3]}</li>
+              <li>${quiz[currentQuestion].answers[2]}</li>
+              <li>${quiz[currentQuestion].answers[0]}</li>
+              <li>${quiz[currentQuestion].answers[3]}</li>
+              <li>${quiz[currentQuestion].answers[1]}</li>
           </ul>
   `;
 
