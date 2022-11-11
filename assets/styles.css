@@ -37,7 +37,12 @@ main {
    padding-inline-start: 0; 
 }
 
-.answer-list li {
+button {
+    border: none;
+    font-size: 1.2rem;
+}
+
+.answer-list li, button {
     background-color: #0075a2;
     color: #F6F7EB;
     text-shadow: 1px 1px 2px #0c0c0c;
@@ -49,9 +54,31 @@ main {
     transition: all .5s;
 }
 
-.answer-list li:hover {
+.answer-list li:hover, button:hover {
     cursor: pointer;
     background-color: #7cc4e0;
+}
+
+button:hover {
+    scale: 1.1;
+}
+
+#scores-section ul {
+    list-style: none;
+    padding-inline-start: 0;
+}
+
+#scores-section ul li {
+    border-radius: 12px;
+    margin-bottom: 5px;
+}
+
+#scores-section ul li:nth-of-type(odd){
+    background-color: #FE7F2D;
+}
+
+#scores-section ul li:nth-of-type(even){
+    background-color: #fbac77;
 }
 
 @media (max-width: 768px){

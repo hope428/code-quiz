@@ -6,6 +6,7 @@ var highScoresList = document.createElement("ul");
 var timer = 90;
 var scoreForm = document.getElementById("scoreForm");
 var currentQuestion = 0;
+var imgSrc = 'https://archives.bulbagarden.net/media/upload/c/c4/Spr_1g_003.png'
 
 var highScores = JSON.parse(localStorage.getItem('allHighScores')) ?? []
 var quiz = [
@@ -25,9 +26,9 @@ var quiz = [
     correctAnswer: "Dodrio",
   },
   {
-    question: "What type is psychic weak against?",
-    answers:["Fighting", "Fire", "Dark", "Psychic"],
-    correctAnswer: "Dark"
+    question: `What pokemon is this <img src=${imgSrc}>`,
+    answers:["Bulbasaur", "Torterra", "Venusaur", "Blastoise"],
+    correctAnswer: "Venusaur"
   },
   {
     question: "What ball is the most effective?",
@@ -56,8 +57,7 @@ function checkAnswer(event) {
   if (quiz[currentQuestion].correctAnswer === selectedAnswer) {
     currentQuestion++;
   } else {
-    console.log("incorrect");
-    timer -= 15;
+    timer -= 10;
   }
   renderQuiz();
 }
