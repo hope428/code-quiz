@@ -2,7 +2,7 @@ var quizContainer = document.querySelector("main");
 var startbtn = document.getElementById("start-btn");
 var questionSection = document.createElement("section");
 var timer = 90;
-var scoreForm = document.createElement("form");
+var scoreForm = document.getElementById("scoreForm");
 var currentQuestion = 0;
 
 var quiz = [
@@ -25,11 +25,12 @@ var quiz = [
 
 //creates score form after game is over
 function createForm() {
-  scoreForm.innerHTML = `<form action="./scores.html">
+  scoreForm.innerHTML = `
 <p>Your score is ${timer}</p>
 <label>Enter your initials:</label>
 <input type="text"></input>
-</form>`;
+<button type="submit">submit</button>
+`;
 }
 
 //checks chosen answer
@@ -45,6 +46,10 @@ function checkAnswer(event) {
     console.log(timer);
   }
   renderQuiz();
+}
+
+function storeHighScores(){
+  console.log('you submitted the form')
 }
 
 //creates quiz element and adds it to page in place of previous element
@@ -68,7 +73,7 @@ function renderQuiz() {
   } else {
     //calls to create score form, replaces question with form
     createForm();
-    questionSection.innerHTML = scoreForm.innerHTML;
+    questionSection.innerHTML = "";
   }
 }
 
