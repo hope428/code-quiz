@@ -1,10 +1,18 @@
 var quizContainer = document.querySelector("main");
 var startbtn = document.getElementById("start-btn");
 var questionSection = document.createElement("section");
+var highScoresContainer = document.getElementById("scores-section");
+var highScoresList = document.createElement("ul");
 var timer = 90;
 var scoreForm = document.getElementById("scoreForm");
 var currentQuestion = 0;
 
+var highScores = [
+  {
+    initials: "LVF",
+    highScore: 90,
+  },
+];
 var quiz = [
   {
     question: "What color is the sun?",
@@ -33,24 +41,28 @@ function createForm() {
 `;
 }
 
+//creates list of scores
+for (let i = 0; i < highScores.length; i++) {
+  var scoreListItem = document.createElement("li");
+  scoreListItem.innerText = `Initials: ${highScores[i].initials} \n Score: ${highScores[i].highScore}`;
+  highScoresList.appendChild(scoreListItem);
+}
+highScoresContainer.appendChild(highScoresList);
+
 //checks chosen answer
 function checkAnswer(event) {
   var selectedAnswer = event.target.textContent;
 
   if (quiz[currentQuestion].correctAnswer === selectedAnswer) {
-    console.log("correct!");
     currentQuestion++;
   } else {
     console.log("incorrect");
     timer -= 15;
-    console.log(timer);
   }
   renderQuiz();
 }
 
-function storeHighScores(){
-  console.log('you submitted the form')
-}
+function storeHighScores() {}
 
 //creates quiz element and adds it to page in place of previous element
 function renderQuiz() {
@@ -84,3 +96,4 @@ function startQuiz() {
 }
 
 startbtn.addEventListener("click", startQuiz);
+scoreForm.addEventListener("submit", storeHighScores);
