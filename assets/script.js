@@ -1,10 +1,11 @@
 var quizContainer = document.querySelector("main");
 var startbtn = document.getElementById("start-btn");
+var scoreForm = document.getElementById("scoreForm");
+var timeLeftEl = document.querySelector("span")
 var questionSection = document.createElement("section");
 var highScoresContainer = document.getElementById("scores-section");
 var highScoresList = document.createElement("ul");
 var timer = 90;
-var scoreForm = document.getElementById("scoreForm");
 var currentQuestion = 0;
 var imgSrc = 'https://archives.bulbagarden.net/media/upload/c/c4/Spr_1g_003.png'
 
@@ -96,6 +97,7 @@ function renderQuiz() {
     createForm();
     questionSection.innerHTML = "";
   }
+  timeLeftEl.textContent = timer
 }
 
 //clears intro and begins quiz
