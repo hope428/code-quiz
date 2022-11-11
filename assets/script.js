@@ -36,18 +36,13 @@ function createForm() {
   scoreForm.innerHTML = `
 <p>Your score is ${timer}</p>
 <label>Enter your initials:</label>
-<input type="text"></input>
-<button type="submit">submit</button>
+<input id="initials" type="text"></input>
+<button id="submit-btn">submit</button>
 `;
-}
 
-//creates list of scores
-for (let i = 0; i < highScores.length; i++) {
-  var scoreListItem = document.createElement("li");
-  scoreListItem.innerText = `Initials: ${highScores[i].initials} \n Score: ${highScores[i].highScore}`;
-  highScoresList.appendChild(scoreListItem);
+  var submitBtn = document.getElementById("submit-btn");
+  submitBtn.addEventListener("click", storeHighScores);
 }
-highScoresContainer.appendChild(highScoresList);
 
 //checks chosen answer
 function checkAnswer(event) {
@@ -62,7 +57,13 @@ function checkAnswer(event) {
   renderQuiz();
 }
 
-function storeHighScores() {}
+function storeHighScores(event) {
+  event.preventDefault();
+  var playerInitials = document.getElementById("initials").value
+  var playerFinalScore = timer
+  
+  window.location.assign("./scores.html")
+}
 
 //creates quiz element and adds it to page in place of previous element
 function renderQuiz() {
@@ -95,5 +96,14 @@ function startQuiz() {
   renderQuiz();
 }
 
+//creates list of scores
+if (highScoresContainer) {
+  for (let i = 0; i < highScores.length; i++) {
+    var scoreListItem = document.createElement("li");
+    scoreListItem.innerText = `Initials: ${highScores[i].initials} \n Score: ${highScores[i].highScore}`;
+    highScoresList.appendChild(scoreListItem);
+  }
+  highScoresContainer.appendChild(highScoresList);
+}
+
 startbtn.addEventListener("click", startQuiz);
-scoreForm.addEventListener("submit", storeHighScores);
