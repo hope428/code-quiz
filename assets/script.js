@@ -7,12 +7,7 @@ var timer = 90;
 var scoreForm = document.getElementById("scoreForm");
 var currentQuestion = 0;
 
-var highScores = [
-  {
-    initials: "LVF",
-    highScore: 90,
-  },
-];
+var highScores = JSON.parse(localStorage.getItem('allHighScores')) ?? []
 var quiz = [
   {
     question: "What color is the sun?",
@@ -59,9 +54,12 @@ function checkAnswer(event) {
 
 function storeHighScores(event) {
   event.preventDefault();
-  var playerInitials = document.getElementById("initials").value
-  var playerFinalScore = timer
-  
+  var playerInfo ={ 
+    initials: document.getElementById("initials").value,
+    highScore: timer
+  }
+  highScores.push(playerInfo)
+  localStorage.setItem('allHighScores', JSON.stringify(highScores))
   window.location.assign("./scores.html")
 }
 
