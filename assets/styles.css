@@ -34,6 +34,28 @@ main {
 }
 
 .answer-list {
-    text-align: left;
-    padding-left: 0
+   padding-inline-start: 0; 
+}
+
+.answer-list li {
+    background-color: #0075a2;
+    color: #F6F7EB;
+    text-shadow: 1px 1px 2px #0c0c0c;
+    list-style: none;
+    letter-spacing: 1.2px;
+    border-radius: 8px;
+    padding: 5px;
+    margin: 5px;
+    transition: all .5s;
+}
+
+.answer-list li:hover {
+    cursor: pointer;
+    background-color: #7cc4e0;
+}
+
+@media (max-width: 768px){
+    main{
+        max-width: 90vw;
+    }
 }

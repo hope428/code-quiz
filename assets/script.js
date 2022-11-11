@@ -10,20 +10,30 @@ var currentQuestion = 0;
 var highScores = JSON.parse(localStorage.getItem('allHighScores')) ?? []
 var quiz = [
   {
-    question: "What color is the sun?",
-    answers: ["blue", "pink", "purple", "yellow"],
-    correctAnswer: "yellow",
+    question: "How many original (gen 1) pokemon were there?",
+    answers: ["250", "89", "151", "150"],
+    correctAnswer: "151",
   },
   {
-    question: "What is my fave food",
-    answers: ["Sushi", "Pizza", "Bread", "All of the above"],
-    correctAnswer: "All of the above",
+    question: "What type is bulbasaur",
+    answers: ["Grass", "Bug", "Grass/Bug", "Grass/Poison"],
+    correctAnswer: "Grass/Poison",
   },
   {
-    question: "What animal is sheldon?",
-    answers: ["dog", "cat", "turtle", "hedgehog"],
-    correctAnswer: "dog",
+    question: "What is the evolve form of Doduo",
+    answers: ["Dodrio", "Dotrio", "Farfetch'd", "Fearow"],
+    correctAnswer: "Dodrio",
   },
+  {
+    question: "What type is psychic weak against?",
+    answers:["Fighting", "Fire", "Dark", "Psychic"],
+    correctAnswer: "Dark"
+  },
+  {
+    question: "What ball is the most effective?",
+    answers:["Great ball", "Ultra ball", "Premier ball", "Master ball"],
+    correctAnswer: "Master ball"
+  }
 ];
 
 //creates score form after game is over
