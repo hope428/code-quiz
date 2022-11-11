@@ -67,12 +67,12 @@ function storeHighScores(event) {
 function renderQuiz() {
   if (currentQuestion < quiz.length) {
     questionSection.innerHTML = `<h1>${quiz[currentQuestion].question}</h1>
-          <ul>
+          <ol class="answer-list">
               <li>${quiz[currentQuestion].answers[2]}</li>
               <li>${quiz[currentQuestion].answers[0]}</li>
               <li>${quiz[currentQuestion].answers[3]}</li>
               <li>${quiz[currentQuestion].answers[1]}</li>
-          </ul>
+          </ol>
   `;
 
     quizContainer.appendChild(questionSection);
