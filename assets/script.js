@@ -1,15 +1,17 @@
 var quizContainer = document.querySelector("main");
 var startbtn = document.getElementById("start-btn");
 var scoreForm = document.getElementById("scoreForm");
-var timeLeftEl = document.querySelector("span")
+var timeLeftEl = document.querySelector("span");
 var questionSection = document.createElement("section");
 var highScoresContainer = document.getElementById("scores-section");
 var highScoresList = document.createElement("ul");
 var timer = 90;
 var currentQuestion = 0;
-var imgSrc = 'https://archives.bulbagarden.net/media/upload/c/c4/Spr_1g_003.png'
+var imgSrc =
+  "https://archives.bulbagarden.net/media/upload/c/c4/Spr_1g_003.png";
 
-var highScores = JSON.parse(localStorage.getItem('allHighScores')) ?? []
+//sets initial high scores array to retreive from localstorage, if nothing is there, set an empty array
+var highScores = JSON.parse(localStorage.getItem("allHighScores")) ?? [];
 var quiz = [
   {
     question: "How many original (gen 1) pokemon were there?",
@@ -17,31 +19,32 @@ var quiz = [
     correctAnswer: "151",
   },
   {
-    question: "What type is bulbasaur",
+    question: "What type is bulbasaur?",
     answers: ["Grass", "Bug", "Grass/Bug", "Grass/Poison"],
     correctAnswer: "Grass/Poison",
   },
   {
-    question: "What is the evolve form of Doduo",
+    question: "What is the evolved form of Doduo?",
     answers: ["Dodrio", "Dotrio", "Farfetch'd", "Fearow"],
     correctAnswer: "Dodrio",
   },
   {
-    question: `What pokemon is this <img src=${imgSrc}>`,
-    answers:["Bulbasaur", "Torterra", "Venusaur", "Blastoise"],
-    correctAnswer: "Venusaur"
+    question: `What pokemon is this <img src=${imgSrc}> ?`,
+    answers: ["Bulbasaur", "Torterra", "Venusaur", "Blastoise"],
+    correctAnswer: "Venusaur",
   },
   {
     question: "What ball is the most effective?",
-    answers:["Great ball", "Ultra ball", "Premier ball", "Master ball"],
-    correctAnswer: "Master ball"
-  }
+    answers: ["Great ball", "Ultra ball", "Premier ball", "Master ball"],
+    correctAnswer: "Master ball",
+  },
 ];
 
 //creates score form after game is over
 function createForm() {
   scoreForm.innerHTML = `
-<p>Your score is ${timer}</p>
+  <h1>Finished!</h1>
+<p>Your score is: ${timer}</p>
 <label>Enter your initials:</label>
 <input id="initials" type="text"></input>
 <button id="submit-btn">submit</button>
@@ -65,13 +68,17 @@ function checkAnswer(event) {
 
 function storeHighScores(event) {
   event.preventDefault();
-  var playerInfo ={ 
+  //when button is clicked, initials input value is stored and current timer.
+  //they are pushed to array as an object
+  var playerInfo = {
     initials: document.getElementById("initials").value,
-    highScore: timer
-  }
-  highScores.push(playerInfo)
-  localStorage.setItem('allHighScores', JSON.stringify(highScores))
-  window.location.assign("./scores.html")
+    highScore: timer,
+  };
+  highScores.push(playerInfo);
+  //sets highScores array to localStorage JSON item
+  localStorage.setItem("allHighScores", JSON.stringify(highScores));
+  //redirects to scores.html
+  window.location.assign("./scores.html");
 }
 
 //creates quiz element and adds it to page in place of previous element
@@ -97,7 +104,7 @@ function renderQuiz() {
     createForm();
     questionSection.innerHTML = "";
   }
-  timeLeftEl.textContent = timer
+  timeLeftEl.textContent = timer;
 }
 
 //clears intro and begins quiz
@@ -106,14 +113,43 @@ function startQuiz() {
   renderQuiz();
 }
 
-//creates list of scores
-if (highScoresContainer) {
+function clearScores() {
+  localStorage.clear();
+  highScores = []
+  renderScores()
+
+}
+
+function renderScores() {
+  highScoresList.innerText = ""
   for (let i = 0; i < highScores.length; i++) {
     var scoreListItem = document.createElement("li");
     scoreListItem.innerText = `Initials: ${highScores[i].initials} \n Score: ${highScores[i].highScore}`;
     highScoresList.appendChild(scoreListItem);
   }
+}
+
+//creates list of scores
+//if statement sets that this block of code only runs on the scores page
+if (highScoresContainer) {
+  //create btn to go back
+  var returnBtn = document.createElement("a");
+  returnBtn.innerHTML = `<a class="orange-btn" href="./index.html">Go back</a>`;
+  //create btn to clear list
+  var clearListBtn = document.createElement("button");
+  clearListBtn.classList.add("orange-btn");
+  clearListBtn.textContent = "Clear Scores";
+
+  //render scores to page
+  renderScores()
+
+  //append highScoresList to highScoresContainer
   highScoresContainer.appendChild(highScoresList);
+  //append buttons to highScoresContainer
+  highScoresContainer.appendChild(returnBtn);
+  highScoresContainer.appendChild(clearListBtn);
+  //addClickListener to button
+  clearListBtn.addEventListener("click", clearScores);
 }
 
 startbtn.addEventListener("click", startQuiz);

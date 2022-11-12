@@ -42,7 +42,7 @@ button {
     font-size: 1.2rem;
 }
 
-.answer-list li, button {
+.answer-list li, button, .orange-btn {
     background-color: #0075a2;
     color: #F6F7EB;
     text-shadow: 1px 1px 2px #0c0c0c;
@@ -54,7 +54,7 @@ button {
     transition: all .5s;
 }
 
-.answer-list li:hover, button:hover {
+.answer-list li:hover, button:hover{
     cursor: pointer;
     background-color: #7cc4e0;
 }
@@ -78,6 +78,14 @@ button:hover {
 }
 
 #scores-section ul li:nth-of-type(even){
+    background-color: #fbac77;
+}
+
+.orange-btn {
+    background-color: #FE7F2D;
+}
+
+.orange-btn:hover {
     background-color: #fbac77;
 }
 
