@@ -40,10 +40,9 @@ var quiz = [
   },
 ];
 
-
-
-function timesUp(){
-
+function timesUp() {
+  questionSection.innerHTML = `<h1>Time's up!</h1>
+  <button><a href="./index.html">Try again!</a></button>`;
 }
 
 //set interval for quiz timer
@@ -54,7 +53,7 @@ function setTimer() {
       timeLeftEl.textContent = timer;
     } else {
       clearInterval(countdown);
-      timesUp()
+      timesUp();
     }
   }, 1000);
 }
@@ -123,7 +122,9 @@ function renderQuiz() {
     createForm();
     questionSection.innerHTML = "";
   }
-  timeLeftEl.textContent = timer;
+  //never display negative values in timer
+  //if timer is less than 0 display 0
+  timeLeftEl.textContent = timer > 0 ? timer : 0;
 }
 
 //clears intro and begins quiz
