@@ -40,6 +40,25 @@ var quiz = [
   },
 ];
 
+
+
+function timesUp(){
+
+}
+
+//set interval for quiz timer
+function setTimer() {
+  var countdown = setInterval(function () {
+    if (timer > 0) {
+      timer--;
+      timeLeftEl.textContent = timer;
+    } else {
+      clearInterval(countdown);
+      timesUp()
+    }
+  }, 1000);
+}
+
 //creates score form after game is over
 function createForm() {
   scoreForm.innerHTML = `
@@ -111,17 +130,20 @@ function renderQuiz() {
 function startQuiz() {
   document.getElementById("quiz-start-screen").style.display = "none";
   renderQuiz();
+  setTimer();
 }
 
 function clearScores() {
+  //clear localstorage
   localStorage.clear();
-  highScores = []
-  renderScores()
-
+  //reset highScores array
+  highScores = [];
+  renderScores();
 }
 
 function renderScores() {
-  highScoresList.innerText = ""
+  //clear previous list before rendering new list
+  highScoresList.innerText = "";
   for (let i = 0; i < highScores.length; i++) {
     var scoreListItem = document.createElement("li");
     scoreListItem.innerText = `Initials: ${highScores[i].initials} \n Score: ${highScores[i].highScore}`;
@@ -141,7 +163,7 @@ if (highScoresContainer) {
   clearListBtn.textContent = "Clear Scores";
 
   //render scores to page
-  renderScores()
+  renderScores();
 
   //append highScoresList to highScoresContainer
   highScoresContainer.appendChild(highScoresList);
