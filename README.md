@@ -9,8 +9,8 @@ is an external page where the scores can be viewed.
 
 ## Usage
 
-[Deployed Site](https://hope428.github.io/pokemon-quiz/index.html)
-[Github Repo](https://github.com/hope428/pokemon-quiz)
+[Deployed Site](https://hope428.github.io/coffee-quiz/index.html)
+[Github Repo](https://github.com/hope428/coffee-quiz)
 
 ![Screenshot of quiz question](./assets/images/screenshot.png)
 
