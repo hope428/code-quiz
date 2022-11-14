@@ -5,7 +5,8 @@ var timeLeftEl = document.querySelector("span");
 var questionSection = document.createElement("section");
 var highScoresContainer = document.getElementById("scores-section");
 var highScoresList = document.createElement("ul");
-var timer = 90;
+
+var timer = 60;
 var currentQuestion = 0;
 var imgSrc =
   "https://archives.bulbagarden.net/media/upload/c/c4/Spr_1g_003.png";
@@ -14,30 +15,46 @@ var imgSrc =
 var highScores = JSON.parse(localStorage.getItem("allHighScores")) ?? [];
 var quiz = [
   {
-    question: "How many original (gen 1) pokemon were there?",
-    answers: ["250", "89", "151", "150"],
-    correctAnswer: "151",
+    question: "What country overall consumes the most coffee in the world?",
+    answers: ["United States", "Columbia", "Ethiopia", "France"],
+    correctAnswer: "United States",
   },
   {
-    question: "What type is bulbasaur?",
-    answers: ["Grass", "Bug", "Grass/Bug", "Grass/Poison"],
-    correctAnswer: "Grass/Poison",
+    question: "What country drinks the most coffee per person in the world?",
+    answers: ["Finland", "Germany", "Columbia", "United States"],
+    correctAnswer: "Finland",
   },
   {
-    question: "What is the evolved form of Doduo?",
-    answers: ["Dodrio", "Dotrio", "Farfetch'd", "Fearow"],
-    correctAnswer: "Dodrio",
+    question: "What brewing method requires the finest ground coffee?",
+    answers: ["French Press", "Turkish", "Pour Over", "Moka Pot"],
+    correctAnswer: "Turkish",
   },
   {
-    question: `What pokemon is this <img src=${imgSrc}> ?`,
-    answers: ["Bulbasaur", "Torterra", "Venusaur", "Blastoise"],
-    correctAnswer: "Venusaur",
+    question: "A coffee bean comes from a _______",
+    answers: ["Legume", "Nut", "Vegetable", "Fruit"],
+    correctAnswer: "Fruit",
   },
   {
-    question: "What ball is the most effective?",
-    answers: ["Great ball", "Ultra ball", "Premier ball", "Master ball"],
-    correctAnswer: "Master ball",
+    question:
+      "What brewing method involves using vapor pressure to force boiling water upwards through coffee grounds?",
+    answers: ["Espresso", "Siphon", "Pour Over", "Drip"],
+    correctAnswer: "Siphon",
   },
+  {
+    question: "What is a coffee with a shot of espresso called?",
+    answers: ["Red Eye", "Flat white", "Americano", "Doppio"],
+    correctAnswer: "Red Eye",
+  },
+  {
+    question: "What country produces the most coffee in the world?",
+    answers: ["Vietnam", "Indonesia", "Columbia", "Brazil"],
+    correctAnswer: "Brazil"
+  },
+  {
+    question: "What is cascara?",
+    answers: ["A type of latte", "Dried coffee cherry", "Coffee from the latin American region", "An edm musician"],
+    correctAnswer: "Dried coffee cherry"
+  }
 ];
 
 function timesUp() {
@@ -106,10 +123,10 @@ function renderQuiz() {
   if (currentQuestion < quiz.length) {
     questionSection.innerHTML = `<h1>${quiz[currentQuestion].question}</h1>
           <ol class="answer-list">
-              <li>${quiz[currentQuestion].answers[2]}</li>
               <li>${quiz[currentQuestion].answers[0]}</li>
-              <li>${quiz[currentQuestion].answers[3]}</li>
               <li>${quiz[currentQuestion].answers[1]}</li>
+              <li>${quiz[currentQuestion].answers[2]}</li>
+              <li>${quiz[currentQuestion].answers[3]}</li>
           </ol>
   `;
 

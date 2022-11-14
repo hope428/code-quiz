@@ -10,7 +10,7 @@ header {
     display: flex;
     justify-content: space-between;
     padding: 0 10px;
-    background-color: #BB0A21;
+    background-color: #654236;
     color: #F6F7EB;
     text-shadow: 1px 1px 1px #0c0c0c;
 }
@@ -23,7 +23,7 @@ a {
 }
 
 a:hover {
-    color: #FE7F2D;
+    color: #104547;
     font-style: italic;
 }
 
@@ -43,7 +43,7 @@ button {
 }
 
 .answer-list li, button, .orange-btn {
-    background-color: #0075a2;
+    background-color: #104547;
     color: #F6F7EB;
     text-shadow: 1px 1px 2px #0c0c0c;
     list-style: none;
@@ -56,7 +56,7 @@ button {
 
 .answer-list li:hover, button:hover{
     cursor: pointer;
-    background-color: #7cc4e0;
+    background-color: #217e82;
 }
 
 button:hover {
@@ -74,19 +74,21 @@ button:hover {
 }
 
 #scores-section ul li:nth-of-type(odd){
-    background-color: #FE7F2D;
+    background-color: #104547;
+    color: #F6F7EB;
 }
 
 #scores-section ul li:nth-of-type(even){
-    background-color: #fbac77;
+    background-color: #217e82;
+    color: #F6F7EB;
 }
 
 .orange-btn {
-    background-color: #FE7F2D;
+    background-color: #104547;
 }
 
 .orange-btn:hover {
-    background-color: #fbac77;
+    background-color: #217e82;
 }
 
 @media (max-width: 768px){
