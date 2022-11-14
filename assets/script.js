@@ -89,7 +89,7 @@ function storeHighScores(event) {
   //when button is clicked, initials input value is stored and current timer.
   //they are pushed to array as an object
   var playerInfo = {
-    initials: document.getElementById("initials").value,
+    initials: document.getElementById("initials").value.toUpperCase(),
     highScore: timer,
   };
   highScores.push(playerInfo);
