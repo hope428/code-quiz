@@ -48,9 +48,11 @@ function timesUp() {
 //set interval for quiz timer
 function setTimer() {
   var countdown = setInterval(function () {
-    if (timer > 0) {
+    if (timer > 0 && currentQuestion < quiz.length) {
       timer--;
       timeLeftEl.textContent = timer;
+    } else if (currentQuestion >= quiz.length) {
+      clearInterval(countdown);
     } else {
       clearInterval(countdown);
       timesUp();
