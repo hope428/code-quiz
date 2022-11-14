@@ -1,4 +1,4 @@
-# pokemon-quiz
+# coffee-quiz
 
 ## Description
 
