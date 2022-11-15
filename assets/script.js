@@ -1,6 +1,6 @@
 var quizContainer = document.querySelector("main");
 var startbtn = document.getElementById("start-btn");
-var scoreForm = document.getElementById("scoreForm");
+var scoreForm = document.createElement("form");
 var timeLeftEl = document.querySelector("span");
 var questionSection = document.createElement("section");
 var highScoresContainer = document.getElementById("scores-section");
@@ -48,13 +48,18 @@ var quiz = [
   {
     question: "What country produces the most coffee in the world?",
     answers: ["Vietnam", "Indonesia", "Columbia", "Brazil"],
-    correctAnswer: "Brazil"
+    correctAnswer: "Brazil",
   },
   {
     question: "What is cascara?",
-    answers: ["A type of latte", "Dried coffee cherry", "Coffee from the latin American region", "An edm musician"],
-    correctAnswer: "Dried coffee cherry"
-  }
+    answers: [
+      "A type of latte",
+      "Dried coffee cherry",
+      "Coffee from the latin American region",
+      "An edm musician",
+    ],
+    correctAnswer: "Dried coffee cherry",
+  },
 ];
 
 function timesUp() {
@@ -87,8 +92,8 @@ function createForm() {
 <button id="submit-btn">submit</button>
 `;
 
-  var submitBtn = document.getElementById("submit-btn");
-  submitBtn.addEventListener("click", storeHighScores);
+  quizContainer.innerHTML = "";
+  quizContainer.append(scoreForm);
 }
 
 //checks chosen answer
@@ -107,15 +112,19 @@ function storeHighScores(event) {
   event.preventDefault();
   //when button is clicked, initials input value is stored and current timer.
   //they are pushed to array as an object
-  var playerInfo = {
-    initials: document.getElementById("initials").value.toUpperCase(),
-    highScore: timer,
-  };
-  highScores.push(playerInfo);
-  //sets highScores array to localStorage JSON item
-  localStorage.setItem("allHighScores", JSON.stringify(highScores));
-  //redirects to scores.html
-  window.location.assign("./scores.html");
+
+  var element = event.target;
+  if (element.matches("button")) {
+    var playerInfo = {
+      initials: document.getElementById("initials").value.toUpperCase(),
+      highScore: timer,
+    };
+    highScores.push(playerInfo);
+    //sets highScores array to localStorage JSON item
+    localStorage.setItem("allHighScores", JSON.stringify(highScores));
+    //redirects to scores.html
+    window.location.assign("./scores.html");
+  }
 }
 
 //creates quiz element and adds it to page in place of previous element
@@ -195,3 +204,4 @@ if (highScoresContainer) {
 }
 
 startbtn.addEventListener("click", startQuiz);
+scoreForm.addEventListener("click", storeHighScores);
